@@ -1,0 +1,93 @@
+@import "../../styles/index.scss";
+
+$card-prefix-cls: "card";
+
+.#{$card-prefix-cls} {
+  width: 100%;
+  margin-bottom: 10px;
+  line-height: 1.5;
+  @include normalShadow();
+  &-head {
+    display: flex;
+    justify-content: space-between;
+    height: 48px;
+    line-height: 48px;
+    font-size: 16px;
+    color: $black-85;
+    &.#{$card-prefix-cls}-head-normal {
+      background-color: #fff;
+      padding: 0 15px;
+      border-radius: 4px 4px 0 0;
+      & + .#{$card-prefix-cls}-content {
+        .#{$card-prefix-cls}-body {
+          border-radius: 0 0 4px 4px;
+        }
+      }
+    }
+    & + .#{$card-prefix-cls}-content {
+      .#{$card-prefix-cls}-body-normal {
+        border-top: 1px solid $black-15;
+      }
+    }
+  }
+  &-body {
+    display: inline-block;
+    vertical-align: top;
+    background-color: #fff;
+    overflow: auto;
+    width: 100%;
+    font-size: 14px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    color: $black-65;
+    &:first-child {
+      width: 100%;
+    }
+    &.#{$card-prefix-cls}-body-normal {
+      padding: 16px;
+    }
+  }
+  &.#{$card-prefix-cls}-bordered {
+    box-shadow: none;
+    .#{$card-prefix-cls}-head-normal {
+      border-top: 1px solid $black-15;
+      border-right: 1px solid $black-15;
+      border-left: 1px solid $black-15;
+    }
+    .#{$card-prefix-cls}-body-normal {
+      border: 1px solid $black-15;
+    }
+    .#{$card-prefix-cls}-body-tabs {
+      border-right: 1px solid $black-15;
+      border-bottom: 1px solid $black-15;
+      border-left: 1px solid $black-15;
+    }
+  }
+  &.#{$card-prefix-cls}-inner {
+    .#{$card-prefix-cls}-head-normal {
+      background-color: $black-5;
+    }
+  }
+  &-cover {
+    display: inline-block;
+    vertical-align: top;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    width: 25%;
+    height: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    & + .card-body {
+      max-width: 75%;
+      height: 100%;
+      border-left: none;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+}

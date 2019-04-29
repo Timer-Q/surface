@@ -1,0 +1,84 @@
+@import "../../styles/index.scss";
+
+$badge-prefix-cls: "badge";
+
+@mixin badge-base {
+  display: block;
+}
+@mixin badge-status($color) {
+  background: $color
+}
+
+.#{$badge-prefix-cls} {
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+  &-count {
+    @include badge-base();
+    color: #fff;
+    text-align: center;
+    font-weight: 400;
+    font-size: 12px;
+    padding: 0 4px;
+    min-width: 14px;
+    height: 14px;
+    line-height: 14px;
+    border-radius: 10px;
+  }
+  &-dot {
+    @include badge-base();
+    position: relative;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+  &-absolute {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    transform: translate(60%, -60%);
+  }
+  &-error {
+    @include badge-status($red);
+  }
+  &-warning {
+    @include badge-status($yellow);
+  }
+  &-success {
+    @include badge-status($green);
+  }
+  &-default {
+    @include badge-status($blue);
+  }
+  &-processing {
+    &:after {
+      content: "";
+      position: absolute;
+      z-index: 0;
+      top: 0;
+      left: 0;
+      background: inherit;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      animation: progress 1.2s infinite ease-in-out;
+    }
+  }
+}
+
+@keyframes progress {
+  0% {
+    transform: scale(1);
+    transform-origin: center;
+    opacity: .5;
+  }
+  100% {
+    transform: scale(1.7);
+    transform-origin: center;
+    opacity: 0;
+  }
+}

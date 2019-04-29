@@ -1,0 +1,89 @@
+@import "../../styles/index.scss";
+
+$alert-prefix-cls: "alert";
+
+@mixin type($border-color) {
+  background-color: colorTransformPalette($border-color, 2);
+  border-color: $border-color;
+  .#{$alert-prefix-cls}-icon {
+    color: colorTransformPalette($border-color, 7);
+  }
+}
+
+@mixin size($font-size) {
+  font-size: $font-size;
+  &.#{$alert-prefix-cls}-with-icon {
+    padding-left: 34px;
+  }
+  .#{$alert-prefix-cls}-icon {
+    top: 8px + $font-size * 0.25;
+  }
+}
+
+.#{$alert-prefix-cls} {
+  position: relative;
+  color: $black-65;
+  border-width: 1px;
+  border-style: solid;
+  padding: 8px;
+  border-radius: 4px;
+  &.#{$alert-prefix-cls}-size-default {
+    @include size($base-font-size);
+  }
+  &.#{$alert-prefix-cls}-size-large {
+    @include size($large-font-size);
+  }
+  &.#{$alert-prefix-cls}-size-small {
+    @include size($small-font-size);
+  }
+  &.#{$alert-prefix-cls}-size-tiny {
+    @include size($tiny-font-size);
+  }
+
+  &.#{$alert-prefix-cls}-closable {
+    padding-right: 34px;
+  }
+
+  &.#{$alert-prefix-cls}-type-info {
+    @include type($blue);
+  }
+  &.#{$alert-prefix-cls}-type-success {
+    @include type($green);
+  }
+  &.#{$alert-prefix-cls}-type-warning {
+    @include type($yellow);
+  }
+  &.#{$alert-prefix-cls}-type-danger {
+    @include type($red);
+  }
+
+  &.#{$alert-prefix-cls}-play {
+    padding-top: 0;
+    padding-bottom: 0;
+    .#{$alert-prefix-cls}-content-item {
+      padding-top: 8px;
+      padding-bottom: 8px;
+    }
+  }
+
+  &-title {
+    display: inline-block;
+    font-size: 1.2em;
+    padding-bottom: 8px;
+  }
+
+  &-content {
+    line-height: 1.5;
+    transition: all 0.3s;
+  }
+  &-icon {
+    position: absolute;
+    left: 12px;
+  }
+  &-close {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    cursor: pointer;
+  }
+}

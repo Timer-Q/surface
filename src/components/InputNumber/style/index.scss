@@ -1,0 +1,55 @@
+@import "../../Input/style/index.scss";
+
+$input-prefix-cls: "input";
+
+.#{$input-prefix-cls} {
+  &-number-wrap {
+    position: relative;
+    &:hover {
+      .#{$input-prefix-cls}-handler {
+        display: block;
+      }
+    }
+    &.#{$input-prefix-cls}-number-disabled:hover {
+      .#{$input-prefix-cls}-handler {
+        display: none;
+      }
+    }
+  }
+  &-disabled {
+    cursor: not-allowed;
+  }
+
+  &-handler-wrap {
+    position: absolute;
+    right: 8px;
+    top: 0;
+  }
+  &-handler {
+    cursor: pointer;
+    display: none;
+  }
+  &-number-disabled {
+    .#{$input-prefix-cls}-handler {
+      cursor: initial;
+    }
+  }
+  &-number-small {
+    .iconfont {
+      font-size: #{$small-font-size};
+    }
+    .#{$input-prefix-cls}-handler {
+      height: #{$small-height / 2 - 2};
+    }
+  }
+
+  &-number-large {
+    .iconfont {
+      font-size: #{$large-font-size};
+    }
+    .#{$input-prefix-cls}-handler {
+      padding-top: 2px;
+      height: #{$large-height / 2 +2};
+    }
+  }
+}

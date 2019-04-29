@@ -1,0 +1,58 @@
+@import "../../styles/index.scss";
+
+$popover-prefix-cls: "popover";
+
+.#{$popover-prefix-cls} {
+  display: inline-block;
+  position: relative;
+  outline: none;
+  &-container {
+    display: block;
+    position: absolute;
+    z-index: $dropdown-zIndex;
+    outline: none;
+  }
+  &-content {
+    background-color: #fff;
+    @include normalShadow();
+    padding: 6px;
+    border-radius: 4px;
+  }
+  &-children-container {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    vertical-align: baseline;
+  }
+}
+
+.dropdown-enter,
+.dropdown-appear {
+  transform: scaleY(0);
+  transform-origin: top center;
+}
+
+.dropdown-enter-active,
+.dropdown-appear-active,
+.dropdown-enter-done {
+  transition: all 0.2s ease-in-out;
+  transform: scaleY(1);
+}
+
+.dropdown-exit {
+  transform-origin: top center;
+  transform: scaleY(1);
+}
+
+.dropdown-exit-active {
+  transition: all 0.2s ease-in-out;
+  transform: scaleY(0);
+}
+
+.dropdown-exit-done {
+  display: none;
+}
+
+.is-hide {
+  display: none;
+}

@@ -1,0 +1,53 @@
+@import "../../styles/index.scss";
+
+$message-prefix-cls: "message";
+
+.#{$message-prefix-cls}-wrapper {
+  position: fixed;
+  top: 100px;
+  width: 100%;
+  z-index: $message-zIndex;
+}
+
+.#{$message-prefix-cls} {
+  text-align: center;
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+  &-content {
+    color: $black-65;
+    display: inline-block;
+    border-radius: 4px;
+    padding: 5px 10px;
+    background-color: #fff;
+    @include normalShadow();
+  }
+}
+
+.#{$message-prefix-cls}-info {
+  .icon {
+    font-size: 14px;
+    color: $blue;
+  }
+}
+
+.#{$message-prefix-cls}-warning {
+  .icon {
+    font-size: 14px;
+    color: $yellow;
+  }
+}
+
+.#{$message-prefix-cls}-error {
+  .icon {
+    font-size: 14px;
+    color: $red;
+  }
+}
+
+.#{$message-prefix-cls}-success {
+  .icon {
+    font-size: 14px;
+    color: $green;
+  }
+}

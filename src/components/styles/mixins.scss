@@ -1,0 +1,95 @@
+@mixin ellipsis() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin arrow($direction, $color: #ddd, $width: 8px) {
+  display: inline-block;
+  overflow: hidden;
+  &:after {
+    display: inline-block;
+    content: "";
+    width: 0;
+    height: 0;
+    border-width: $width;
+    border-style: solid;
+    border-color: transparent;
+  }
+  @if $direction == "bottom" {
+    width: $width * 2;
+    height: $width;
+    &:after {
+      border-top-color: $color;
+    }
+  }
+  @if $direction == "top" {
+    width: $width * 2;
+    height: $width;
+    &:after {
+      border-bottom-color: $color;
+    }
+  }
+  @if $direction == "right" {
+    width: $width;
+    height: $width * 2;
+    &:after {
+      border-left-color: $color;
+    }
+  }
+  @if $direction == "left" {
+    width: $width;
+    height: $width * 2;
+    &:after {
+      border-right-color: $color;
+    }
+  }
+}
+
+@mixin gradient($startColor, $endColor, $direction: 90deg) {
+  background-image: linear-gradient($direction, $startColor, $endColor);
+}
+
+@mixin title($paddingBottom: 5px, $fontSize: 14px, $color: $black-65) {
+  padding-bottom: $paddingBottom;
+  font-size: $fontSize;
+  color: $color;
+}
+
+@mixin clearfix {
+  &::before {
+    content: "";
+    display: table;
+  }
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin placeholder($color) {
+  // Firefox
+  &::-moz-placeholder {
+    color: lighten($color: $color, $amount: 65%);
+    opacity: 1; // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526
+  }
+  // Internet Explorer 10+
+  &:-ms-input-placeholder {
+    color: lighten($color: $color, $amount: 65%);
+  }
+  // Safari and Chrome
+  &::-webkit-input-placeholder {
+    color: lighten($color: $color, $amount: 65%);
+  }
+}
+
+@mixin normalShadow(
+  $x: 0,
+  $y: 2px,
+  $blur: 12px,
+  $spred: 0,
+  $color: rgba($color: #000, $alpha: 0.15)
+) {
+  box-shadow: $x $y $blur $spred $color;
+}

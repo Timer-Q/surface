@@ -1,0 +1,90 @@
+@import "../../styles/index.scss";
+$radio-prefix-cls: "radio";
+$radio-btn-prefix-cls: "radio-button";
+
+@mixin size($fontSize: $base-font-size, $height: $base-height) {
+  font-size: $fontSize;
+  height: $height;
+  line-height: $height;
+  .#{$radio-btn-prefix-cls}-label {
+    padding: 0 $height / 2;
+  }
+}
+
+.#{$radio-prefix-cls}-group {
+  .#{$radio-btn-prefix-cls}-wrapper {
+    display: inline-flex;
+    position: relative;
+    margin: 0;
+    height: 32px;
+    line-height: 30px;
+    color: $black-65;
+    transition: all 0.3s;
+    cursor: pointer;
+    border: 1px solid $black-15;
+    background: #fff;
+    &:first-child {
+      border-radius: 4px 0 0 4px;
+      border-left: 1px solid $black-15;
+    }
+    &:last-child {
+      border-radius: 0 4px 4px 0;
+    }
+    &:not(:first-child) {
+      margin-left: -1px;
+    }
+    &.is-checked {
+      border-color: $blue;
+      box-shadow: none;
+      z-index: 1;
+      color: $blue;
+    }
+    &.is-enable {
+      &:hover {
+        color: $blue;
+        border-color: $blue;
+        z-index: 1;
+      }
+    }
+    &.is-disabled {
+      border-color: $black-15;
+      cursor: not-allowed;
+      color: $black-45;
+      background-color: $black-5;
+      .#{$radio-btn-prefix-cls}-input {
+        cursor: not-allowed;
+      }
+    }
+    &.is-checked {
+      &.is-disabled {
+        border-color: $black-15;
+        color: #fff;
+        background-color: $black-15;
+      }
+    }
+
+    &.#{$radio-btn-prefix-cls}-large {
+      @include size($large-font-size, $large-height);
+    }
+    &.#{$radio-btn-prefix-cls}-default {
+      @include size($base-font-size, $base-height);
+    }
+    &.#{$radio-btn-prefix-cls}-small {
+      @include size($small-font-size, $small-height);
+    }
+    &.#{$radio-btn-prefix-cls}-tiny {
+      @include size($tiny-font-size, $tiny-height);
+    }
+  }
+  .#{$radio-btn-prefix-cls}-label {
+    position: relative;
+    height: 100%;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .#{$radio-btn-prefix-cls}-input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+}

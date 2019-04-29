@@ -1,0 +1,20 @@
+@import "../../styles/index.scss";
+
+$tooltip-prefix-cls: "tooltip";
+
+.#{$tooltip-prefix-cls} {
+  display: inline-block;
+  &-message {
+    padding: 6px 8px;
+    border-radius: 4px;
+    @include normalShadow();
+    font-size: 14px;
+  }
+  &-message-light {
+    background: #fff;
+  }
+  &-message-dark {
+    background: $black-65;
+    color: #fff;
+  }
+}

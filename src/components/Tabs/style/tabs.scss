@@ -1,0 +1,137 @@
+@import "../../styles/index.scss";
+
+$tab-prefix-cls: "tabs";
+
+@mixin tab-button-active() {
+  color: #fff;
+  background: $blue;
+}
+
+.#{$tab-prefix-cls} {
+  position: relative;
+  .#{$tab-prefix-cls}-nav-container {
+    position: relative;
+    margin-bottom: 8px;
+    min-height: 36px;
+    overflow: hidden;
+  }
+  .#{$tab-prefix-cls}-nav-content {
+    display: flex;
+    align-items: center;
+  }
+  .#{$tab-prefix-cls}-nav {
+    position: relative;
+    text-align: left;
+    overflow: hidden;
+    box-sizing: border-box;
+    background-color: #fff;
+    width: 100%;
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+    &.#{$tab-prefix-cls}-nav-overflow {
+      padding: 0 20px;
+      & > .tab-arrow {
+        display: inline-flex;
+        align-items: center;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        background: #fff;
+        width: 20px;
+        height: 20px;
+        z-index: 10;
+        &:first-child {
+          left: 0;
+          justify-content: flex-start;
+        }
+        &:last-child {
+          right: 0;
+          justify-content: flex-end;
+        }
+      }
+    }
+    &.#{$tab-prefix-cls}-nav-bordered {
+      border-bottom: 1px solid $black-15;
+    }
+    &-bar {
+      display: inline-block;
+      position: relative;
+      white-space: nowrap;
+      transition: transform 0.2s;
+      box-sizing: border-box;
+    }
+    .#{$tab-prefix-cls}-tab {
+      display: inline-flex;
+      align-items: center;
+      padding: 5px 15px;
+      height: 36px;
+      box-sizing: border-box;
+      cursor: pointer;
+      transition: all 0.2s;
+      user-select: none;
+      vertical-align: middle;
+      &-content {
+        display: inline-flex;
+        justify-content: space-between;
+        align-items: center;
+        line-height: 1;
+        & > .icon {
+          margin-left: 10px;
+        }
+      }
+      &:hover {
+        color: $blue;
+      }
+      &.is-actived {
+        font-weight: 600;
+        color: $blue;
+      }
+      &.#{$tab-prefix-cls}-tab-button {
+        background-color: $black-5;
+        border: none;
+        border-radius: 4px;
+
+        &:not(:last-child) {
+          margin-right: 10px;
+        }
+        &.is-actived {
+          @include tab-button-active();
+        }
+      }
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      &-close {
+        display: inline-block;
+        box-sizing: border-box;
+        padding-left: 8px;
+        margin-left: 8px;
+        vertical-align: middle;
+        border-left: 1px solid $black-15;
+      }
+      &-prefix {
+        padding-right: 5px;
+      }
+    }
+  }
+  .#{$tab-prefix-cls}-ink-bar {
+    position: absolute;
+    width: 100px;
+    height: 2px;
+    background-color: $blue;
+    bottom: 0;
+    transition: all 0.2s;
+  }
+  .#{$tab-prefix-cls}-content {
+    position: relative;
+    text-align: left;
+    .#{$tab-prefix-cls}-pane {
+      transition: all 0.2s;
+      &.is-inactived {
+        display: none;
+      }
+    }
+  }
+}

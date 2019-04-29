@@ -1,0 +1,213 @@
+@import "../../styles/index.scss";
+
+$cascader-pre-cls: "cascader";
+
+.#{$cascader-pre-cls}-popover {
+  background-color: #fff;
+  @include normalShadow();
+  border-radius: 4px;
+}
+
+.#{$cascader-pre-cls}-menus {
+  display: flex;
+  .not-found {
+    color: $black-65;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 24px;
+  }
+  .spin-size {
+    height: auto;
+    width: auto;
+  }
+  .data-icon {
+    width: 12px;
+    height: 12px;
+  }
+  .font-loading {
+    font-size: 12px;
+    color: $black-65;
+  }
+  .#{$cascader-pre-cls}-search-loading {
+    margin: 0;
+    padding: 0;
+    height: 200px;
+  }
+  .#{$cascader-pre-cls}-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    // height: 200px;
+    &.hide-scroll{
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+    &.scroll-height-default{
+      height: 200px;
+      overflow-y: scroll;
+    }
+    &:not(:last-child) {
+      border-right: 1px solid $black-5;
+    }
+    &-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-sizing: border-box;
+      color: $black-65;
+      line-height: 2;
+      white-space: nowrap;
+      min-width: 110px;
+      padding: 0 10px;
+      cursor: pointer;
+      transition: all 0.3s;
+      &:hover {
+        background-color: $blue-2;
+      }
+    }
+    &-search-item {
+      display: flex;
+      align-items: center;
+      box-sizing: border-box;
+      line-height: 2;
+      white-space: nowrap;
+      min-width: 110px;
+      padding: 0 10px;
+      cursor: pointer;
+      transition: all 0.3s;
+      color: $black-65;
+      &:hover {
+        background-color: $blue-2;
+      }
+    }
+    &-item-active {
+      background: $black-5;
+      font-weight: 600;
+      color: $blue;
+    }
+    .selected-text {
+      color: $red;
+      display: inline-block;
+    }
+  }
+}
+.cascader-wrap {
+  .cascader-close {
+    width: 100%;
+    height: 100%;
+    color: $black-15;
+    &:hover {
+      cursor: pointer;
+      color: $black-25;
+    }
+  }
+  .icon-wrap {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    width: 14px;
+    height: 14px;
+    line-height: 14px;
+    border-radius: 14px;
+    transform: translate(0, -50%);
+    // background: #fff;
+    .icon{
+      color: #d9d9d9;
+    }
+    i{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    color: $black-15;
+  }
+  .del-icon-wrap {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    width: 14px;
+    height: 14px;
+    line-height: 14px;
+    z-index: 5 !important;
+    border-radius: 14px;
+    background: #ffffff;
+    transform: translate(0, -50%);
+  }
+  .del-icon-wrap-hide {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    width: 14px;
+    height: 14px;
+    line-height: 14px;
+    z-index: -5;
+    border-radius: 14px;
+    background: #ffffff;
+    transform: translate(0, -50%);
+  }
+  .cascader-flex-center {
+    display: flex;
+    align-content: center;
+    justify-items: center;
+  }
+  .cascader-up {
+    width: 100%;
+    height: 100%;
+    animation: rotateup 0.5s ease 0s 1 forwards;
+  }
+  @keyframes rotateup {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(180deg);
+    }
+  }
+  .cascader-down {
+    height: 100%;
+    width: 100%;
+    animation: rotatedown 0.3s ease 0s 1 forwards;
+  }
+  @keyframes rotatedown {
+    from {
+      transform: rotate(180deg);
+    }
+    to {
+      transform: rotate(0deg);
+    }
+  }
+  &.cascader-pos-r {
+    position: relative;
+  }
+  &.cascader-d-i-b {
+    display: inline-block;
+  }
+  .v-h {
+    visibility: hidden;
+  }
+  .f-14 {
+    .icon {
+      font-size: 14px;
+    }
+  }
+}
+.cascader-small-font-size {
+  font-size: $small-font-size;
+}
+.cascader-base-font-size {
+  font-size: $base-font-size;
+}
+.cascader-large-font-size {
+  font-size: $large-font-size;
+}
+.cascader-m-l-10 {
+  margin-left: 10px;
+}
+.cascader-flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

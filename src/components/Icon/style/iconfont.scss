@@ -1,0 +1,345 @@
+@font-face {
+  font-family: "iconfont";
+  src: url("https://wpstatic.mafengwo.net/msales/salesstatic/css/breezy/0.1.150/iconfont.woff")
+      format("woff"),
+    url("https://wpstatic.mafengwo.net/msales/salesstatic/css/breezy/0.1.150/iconfont.ttf")
+      format("truetype");
+}
+
+$iconfont-prefix-cls: "icon";
+
+.#{$iconfont-prefix-cls}-dot:before {
+  content: "";
+  width: 15px;
+  height: 15px;
+  border-radius: 50px;
+  background-color: #999;
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.#{$iconfont-prefix-cls}-link:before {
+  content: "\e672";
+}
+
+.#{$iconfont-prefix-cls}-suit:before {
+  content: "\e61c";
+}
+
+.#{$iconfont-prefix-cls}-check-circle-o:before {
+  content: "\e602";
+}
+
+.#{$iconfont-prefix-cls}-calendar-o:before {
+  content: "\e603";
+}
+
+.#{$iconfont-prefix-cls}-calendar:before {
+  content: "\e609";
+}
+
+.#{$iconfont-prefix-cls}-delete:before {
+  content: "\e60a";
+}
+
+.#{$iconfont-prefix-cls}-file-text:before {
+  content: "\e60d";
+}
+
+.#{$iconfont-prefix-cls}-hotel:before {
+  content: "\e60e";
+}
+
+.#{$iconfont-prefix-cls}-minus-circle-o:before {
+  content: "\e616";
+}
+
+.#{$iconfont-prefix-cls}-minus-circle:before {
+  content: "\e617";
+}
+
+.#{$iconfont-prefix-cls}-plus-circle-o:before {
+  content: "\e618";
+}
+
+.#{$iconfont-prefix-cls}-plus-circle:before {
+  content: "\e619";
+}
+
+.#{$iconfont-prefix-cls}-environment:before {
+  content: "\e61a";
+}
+
+.#{$iconfont-prefix-cls}-environment-o:before {
+  content: "\e61b";
+}
+
+.#{$iconfont-prefix-cls}-file-text-o:before {
+  content: "\e61d";
+}
+
+.#{$iconfont-prefix-cls}-logo:before {
+  content: "\e64d";
+}
+
+.#{$iconfont-prefix-cls}-theme:before {
+  content: "\e629";
+}
+
+.#{$iconfont-prefix-cls}-loading:before {
+  content: "\e628";
+}
+
+.#{$iconfont-prefix-cls}-utensils:before {
+  content: "\e62a";
+}
+
+.#{$iconfont-prefix-cls}-light-bulb:before {
+  content: "\e62b";
+}
+
+.#{$iconfont-prefix-cls}-flag:before {
+  content: "\e62c";
+}
+
+.#{$iconfont-prefix-cls}-logo-basic:before {
+  content: "\e62d";
+}
+
+.#{$iconfont-prefix-cls}-star-active:before {
+  content: "\e601";
+}
+
+.#{$iconfont-prefix-cls}-star:before {
+  content: "\e62e";
+}
+
+.#{$iconfont-prefix-cls}-bulb:before {
+  content: "\e633";
+}
+
+.#{$iconfont-prefix-cls}-new:before {
+  content: "\e637";
+}
+
+.#{$iconfont-prefix-cls}-like:before {
+  content: "\e600";
+}
+
+.#{$iconfont-prefix-cls}-dislike:before {
+  content: "\e63a";
+}
+
+.#{$iconfont-prefix-cls}-bottom-left-angle:before {
+  content: "\e640";
+}
+
+.#{$iconfont-prefix-cls}-lock:before {
+  content: "\e64e";
+}
+
+.#{$iconfont-prefix-cls}-close:before {
+  content: "\e655";
+}
+
+.#{$iconfont-prefix-cls}-double-left:before {
+  content: "\e658";
+}
+
+.#{$iconfont-prefix-cls}-double-right:before {
+  content: "\e659";
+}
+
+.#{$iconfont-prefix-cls}-arrow-down:before {
+  content: "\e65c";
+}
+
+.#{$iconfont-prefix-cls}-arrow-up:before {
+  content: "\e638";
+}
+
+.#{$iconfont-prefix-cls}-caret-down:before {
+  content: "\e65d";
+}
+
+.#{$iconfont-prefix-cls}-caret-left:before {
+  content: "\e665";
+}
+
+.#{$iconfont-prefix-cls}-caret-up:before {
+  content: "\e669";
+}
+
+.#{$iconfont-prefix-cls}-caret-right:before {
+  content: "\e66f";
+}
+
+.#{$iconfont-prefix-cls}-plus:before {
+  content: "\e667";
+}
+
+.#{$iconfont-prefix-cls}-minus:before {
+  content: "\e679";
+}
+
+.#{$iconfont-prefix-cls}-qrcode:before {
+  content: "\e668";
+}
+
+.#{$iconfont-prefix-cls}-upload:before {
+  content: "\e66a";
+}
+
+.#{$iconfont-prefix-cls}-clock-circle-o:before {
+  content: "\e66b";
+}
+
+.#{$iconfont-prefix-cls}-sort:before {
+  content: "\e66c";
+}
+
+.#{$iconfont-prefix-cls}-search:before {
+  content: "\e66d";
+}
+
+.#{$iconfont-prefix-cls}-up:before {
+  content: "\e661";
+}
+
+.#{$iconfont-prefix-cls}-down:before {
+  content: "\e654";
+}
+
+.#{$iconfont-prefix-cls}-left:before {
+  content: "\e657";
+}
+
+.#{$iconfont-prefix-cls}-right:before {
+  content: "\e65f";
+}
+
+.#{$iconfont-prefix-cls}-reload:before {
+  content: "\e673";
+}
+
+.#{$iconfont-prefix-cls}-calendar:before {
+  content: "\e651";
+}
+
+.#{$iconfont-prefix-cls}-exclamation-circle-o:before {
+  content: "\e656";
+}
+
+.#{$iconfont-prefix-cls}-exclamation-circle:before {
+  content: "\e674";
+}
+
+.#{$iconfont-prefix-cls}-left-circle-o:before {
+  content: "\e65a";
+}
+
+.#{$iconfont-prefix-cls}-right-circle-o:before {
+  content: "\e660";
+}
+
+.#{$iconfont-prefix-cls}-left-circle:before {
+  content: "\e66e";
+}
+
+.#{$iconfont-prefix-cls}-right-circle:before {
+  content: "\e666";
+}
+
+.#{$iconfont-prefix-cls}-question-circle-o:before {
+  content: "\e65e";
+}
+
+.#{$iconfont-prefix-cls}-question-circle:before {
+  content: "\e65b";
+}
+
+.#{$iconfont-prefix-cls}-close-circle:before {
+  content: "\e662";
+}
+
+.#{$iconfont-prefix-cls}-close-circle-o:before {
+  content: "\e663";
+}
+
+.#{$iconfont-prefix-cls}-check-circle-o:before {
+  content: "\e664";
+}
+
+.#{$iconfont-prefix-cls}-check-circle:before {
+  content: "\e676";
+}
+
+.#{$iconfont-prefix-cls}-info-circle:before {
+  content: "\e671";
+}
+
+.#{$iconfont-prefix-cls}-info-circle-o:before {
+  content: "\e678";
+}
+
+.#{$iconfont-prefix-cls}-clock-circle:before {
+  content: "\e675";
+}
+
+.#{$iconfont-prefix-cls}-edit:before {
+  content: "\e677";
+}
+
+// menu icons
+.#{$iconfont-prefix-cls}-custom:before {
+  content: "\e641";
+}
+
+.#{$iconfont-prefix-cls}-home:before {
+  content: "\e642";
+}
+
+.#{$iconfont-prefix-cls}-data:before {
+  content: "\e643";
+}
+
+.#{$iconfont-prefix-cls}-Openplatform:before {
+  content: "\e644";
+}
+
+.#{$iconfont-prefix-cls}-Recent:before {
+  content: "\e645";
+}
+
+.#{$iconfont-prefix-cls}-Operation:before {
+  content: "\e646";
+}
+
+.#{$iconfont-prefix-cls}-product:before {
+  content: "\e647";
+}
+
+.#{$iconfont-prefix-cls}-sell:before {
+  content: "\e648";
+}
+
+.#{$iconfont-prefix-cls}-store:before {
+  content: "\e649";
+}
+
+.#{$iconfont-prefix-cls}-service:before {
+  content: "\e64a";
+}
+
+.#{$iconfont-prefix-cls}-study:before {
+  content: "\e64b";
+}
+
+.#{$iconfont-prefix-cls}-trade:before {
+  content: "\e64c";
+}

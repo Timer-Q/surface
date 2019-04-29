@@ -1,0 +1,105 @@
+$row-prefix-cls: "row";
+$col-prefix-cls: "col";
+
+//总格数
+$grid-columns: 24 !default;
+
+//超小屏名
+$col-xs: xs !default;
+
+//槽宽
+$gutter: 0 !default;
+
+//屏幕尺寸
+$sr-sizes: 768px 992px 1200px;
+
+//屏幕类型map
+$sr-type-maps: (
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1600px
+);
+
+.#{$row-prefix-cls} {
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  margin: {
+    left: $gutter/-2;
+    right: $gutter/-2;
+  }
+
+  // justify-content
+  &.#{$row-prefix-cls}-start {
+    justify-content: flex-start;
+  }
+  &.#{$row-prefix-cls}-end {
+    justify-content: flex-end;
+  }
+  &.#{$row-prefix-cls}-center {
+    justify-content: center;
+  }
+  &.#{$row-prefix-cls}-space-around {
+    justify-content: space-around;
+  }
+  &.#{$row-prefix-cls}-space-between {
+    justify-content: space-between;
+  }
+
+  // align-items
+  &.#{$row-prefix-cls}-top {
+    align-items: flex-start;
+  }
+  &.#{$row-prefix-cls}-middle {
+    align-items: center;
+  }
+  &.#{$row-prefix-cls}-bottom {
+    align-items: flex-end;
+  }
+
+  //$end:最大格数，$sr-name:屏幕名
+  @mixin make-col($end, $sr-name: "") {
+    @for $index from 1 through $end {
+      .#{$col-prefix-cls}#{$sr-name}-#{$index} {
+        position: relative;
+        min-height: 1px;
+        padding-right: $gutter/2;
+        padding-left: $gutter/2;
+        width: percentage($index/$end);
+        box-sizing: border-box;
+      }
+      .#{$col-prefix-cls}#{$sr-name}-push-#{$index} {
+        left: percentage(($index / $grid-columns));
+      }
+      .#{$col-prefix-cls}#{$sr-name}-pull-#{$index} {
+        right: percentage(($index / $grid-columns));
+      }
+      .#{$col-prefix-cls}#{$sr-name}-offset-#{$index} {
+        margin-left: percentage(($index / $grid-columns));
+      }
+      .#{$col-prefix-cls}#{$sr-name}-order-#{$index} {
+        order: $index;
+      }
+    }
+  }
+
+  @include make-col($grid-columns);
+
+  @media (max-width: 576px) {
+    @include make-col($grid-columns, -xs);
+  }
+
+  @mixin make-col-with-mediaquery($sr-name, $min-width) {
+    @media (min-width: $min-width) {
+      @include make-col($grid-columns, -#{$sr-name});
+    }
+  }
+
+  //生成超小屏以外的列
+  //$screen-name:屏幕名，$min:屏幕的最小宽度
+  @each $screen-name, $min-width in $sr-type-maps {
+    @include make-col-with-mediaquery($screen-name, $min-width);
+  }
+}

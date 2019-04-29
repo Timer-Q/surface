@@ -1,0 +1,246 @@
+@import "../../styles/index.scss";
+
+$select-prefix-cls: "select";
+$option-prefix-cls: "option";
+
+@mixin padding($height: $base-height, $font-size: $base-font-size) {
+  $padding-vertical: $height / 2 - $font-size;
+  $padding-horizontal: $font-size / 2;
+  padding: $padding-vertical $padding-horizontal;
+}
+
+@mixin content-size($height: $base-height, $font-size: $base-font-size) {
+  min-height: $height;
+  font-size: $font-size;
+  .#{$select-prefix-cls}-multiple {
+    min-height: $height - 2px;
+  }
+  .#{$select-prefix-cls}-value {
+    @include padding($height, $font-size);
+  }
+  .is-single {
+    padding-left: $height / 5;
+    padding-right: $height / 5;
+  }
+  .tag {
+    padding-top: 1px;
+    padding-bottom: 1px;
+  }
+}
+
+@mixin dropdown-size($height: $base-height, $font-size: $base-font-size) {
+  font-size: $font-size;
+  max-height: $height * 10;
+  .#{$option-prefix-cls} {
+    padding-top: $font-size / 2;
+    padding-bottom: $font-size / 2;
+    min-height: $height;
+  }
+}
+
+@mixin border($color: $blue) {
+  &:hover {
+    border-color: $color;
+  }
+  &.is-focus {
+    border-color: $color;
+    box-shadow: 0 0 3px 2px colorPalette($color, 70%);
+  }
+}
+
+@mixin title-size($font-size: $base-font-size, $height: $base-height) {
+  $padding-vertical: $font-size / 2;
+  $padding-horizontal: $font-size / 2;
+  font-size: $font-size;
+  padding-top: $padding-vertical;
+  padding-left: $padding-horizontal;
+}
+
+.#{$select-prefix-cls}-wrapper {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  color: $black-65;
+  line-height: 1;
+  .#{$select-prefix-cls}-dropdown {
+    width: 100%;
+    background: #fff;
+    @include normalShadow();
+    margin: 5px 0 0 0;
+    padding: 0;
+    list-style: none;
+    overflow: auto;
+    &.is-opened {
+      display: block;
+    }
+    .#{$option-prefix-cls} {
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      cursor: pointer;
+      transition: all 0.3s;
+      user-select: none;
+      box-sizing: border-box;
+      color: $black-65;
+      margin: 0;
+      line-height: 1.5;
+      @include clearfix();
+      &.is-selected {
+        color: $blue;
+      }
+      &:hover,
+      &.is-hover {
+        background-color: $blue-3;
+        color: $blue;
+      }
+      &.is-disabled {
+        color: $black-45;
+        pointer-events: none;
+      }
+    }
+
+    &.#{$select-prefix-cls}-default {
+      @include dropdown-size();
+    }
+    &.#{$select-prefix-cls}-tiny {
+      @include dropdown-size($tiny-height, $tiny-font-size);
+    }
+    &.#{$select-prefix-cls}-small {
+      @include dropdown-size($small-height, $small-font-size);
+    }
+    &.#{$select-prefix-cls}-large {
+      @include dropdown-size($large-height, $large-font-size);
+    }
+
+    .#{$option-prefix-cls}-group {
+      color: $black-45;
+      padding: 0 12px;
+      height: 30px;
+      line-height: 30px;
+      font-size: 14px;
+    }
+  }
+  .#{$select-prefix-cls}-multiple {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    list-style: none;
+    padding: 0 10px 4px 10px;
+    margin: 0;
+    font-size: inherit;
+    box-sizing: border-box;
+    &-item {
+      display: inline-block;
+      height: 100%;
+      margin: 0;
+      font-size: inherit;
+      margin-right: 4px;
+      margin-top: 4px;
+    }
+    &-input {
+      flex: 1;
+    }
+  }
+  .#{$select-prefix-cls}-content {
+    display: flex;
+    align-items: center;
+    position: relative;
+    border-radius: 4px;
+    outline: none;
+    transition: all 0.2s;
+    box-sizing: border-box;
+    &.is-disabled {
+      background: $black-5;
+      pointer-events: none;
+    }
+    &.has-border {
+      border: 1px solid $black-15;
+      @include border();
+    }
+    &.#{$select-prefix-cls}-content-default {
+      @include content-size();
+    }
+    &.#{$select-prefix-cls}-content-large {
+      @include content-size($large-height, $large-font-size);
+    }
+    &.#{$select-prefix-cls}-content-small {
+      @include content-size($small-height, $small-font-size);
+    }
+    &.#{$select-prefix-cls}-content-tiny {
+      @include content-size($tiny-height, $tiny-font-size);
+    }
+
+    &-title {
+      color: $black-65;
+      &.#{$select-prefix-cls}-content-title-default {
+        @include title-size($base-font-size, $base-height);
+      }
+      &.#{$select-prefix-cls}-content-title-large {
+        @include title-size($large-font-size, $large-height);
+      }
+      &.#{$select-prefix-cls}-content-title-small {
+        @include title-size($small-font-size, $small-height);
+      }
+      &.#{$select-prefix-cls}-content-title-tiny {
+        @include title-size($tiny-font-size, $tiny-height);
+      }
+    }
+    .#{$select-prefix-cls}-selection {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      position: relative;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      &-input {
+        align-self: stretch;
+        width: 100%;
+        border: none;
+        outline: none;
+        background: transparent;
+        color: inherit;
+        font-size: inherit;
+        margin: 0;
+      }
+      &-suffix {
+        line-height: 0;
+        color: $black-15;
+      }
+    }
+    .#{$select-prefix-cls}-value {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      z-index: 1;
+      max-width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition: all 0.3s;
+      user-select: none;
+      box-sizing: border-box;
+      color: inherit;
+      line-height: 1.2;
+    }
+  }
+  &.has-error {
+    .#{$select-prefix-cls}-content {
+      &.has-border {
+        border-color: $red;
+        @include border($red);
+      }
+    }
+  }
+}
+
+.is-actived {
+  .suffix-rotate {
+    &:before {
+      transform: rotate(180deg);
+    }
+  }
+}

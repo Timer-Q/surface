@@ -1,0 +1,105 @@
+@import "../../styles/index.scss";
+
+$progress-pre-cls: "progress";
+
+.#{$progress-pre-cls} {
+  position: relative;
+  font-size: 14px;
+  &-outer {
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+    &:not(:last-child) {
+      padding-right: calc(2em + 8px);
+      margin-right: calc(-2em - 8px);
+    }
+  }
+  &-bar {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    background-color: $black-5;
+    border-radius: 100px;
+    vertical-align: middle;
+    box-sizing: border-box;
+    &-bg {
+      width: 30%;
+      height: 8px;
+      border-radius: 100px;
+      transition: width 0.2s ease-in-out;
+      background: $blue;
+    }
+    &-success-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    &-normal {
+      background: $blue;
+    }
+    &-warning {
+      background: $yellow;
+    }
+    &-exception {
+      background: $red;
+    }
+    &-success {
+      background: $green;
+    }
+    &-active {
+      &:before {
+        content: "";
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #fff;
+        border-radius: 10px;
+        animation: active 2.4s ease-out infinite;
+      }
+    }
+  }
+  &-text {
+    display: inline-block;
+    width: 2em;
+    text-align: left;
+    vertical-align: middle;
+    white-space: nowrap;
+    color: $black-45;
+    line-height: 1;
+    margin-left: 8px;
+  }
+  &-circle {
+    display: inline-block;
+    position: relative;
+    .#{$progress-pre-cls}-text {
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      top: 50%;
+      left: 0;
+      margin: 0;
+      transform: translateY(-50%);
+    }
+    &-path {
+      transition: all 0.2s ease-in-out;
+    }
+  }
+}
+
+@keyframes active {
+  0% {
+    opacity: 0.1;
+    width: 0;
+  }
+  20% {
+    opacity: 0.5;
+    width: 0;
+  }
+  100% {
+    opacity: 0;
+    width: 100%;
+  }
+}

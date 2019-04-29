@@ -1,0 +1,243 @@
+.mfw-spin {
+  height: 30px;
+  width: 30px;
+  font-family: "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif,
+  "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";;
+  font-size: 14px;
+  font-variant: tabular-nums;
+  line-height: 1.5;
+  color: transparentize(#000, 0.65);
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  color: #1890ff;
+  vertical-align: middle;
+  text-align: center;
+  opacity: 0;
+  position: absolute;
+  transition: mfwRotate 0.3s ease-in-out;
+  display: none;
+  margin-left: 15px;
+
+  .icon:before{
+    height: 27px;
+    width: 27px;
+    animation: loadingCircle 1s infinite linear;
+  }
+
+  &-spinning {
+    opacity: 1;
+    position: static;
+    display: inline-block;
+  }
+
+  //.mfw-spin-dot {
+  //  position: absolute;
+  //  top: 50%;
+  //  left: 50%;
+  //  margin: -10px;
+  //}
+  .mfw-spin-text {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    padding-top: 5px;
+    text-shadow: 0 1px 2px #fff;
+  }
+  &.mfw-spin-show-text .mfw-spin-dot {
+    margin-top: -20px;
+  }
+
+  &-nested-loading {
+    position: relative;
+    > div > .mfw-spin {
+      display: block;
+      position: absolute;
+      height: 100%;
+      max-height: 360px;
+      width: 100%;
+      z-index: 4;
+    }
+
+  > div > .mfw-spin-sm {
+     .mfw-spin-dot {
+        margin: -7px;
+     }
+     .mfw-spin-text {
+        padding-top: 2px;
+     }
+        &.mfw-spin-show-text .mfw-spin-dot {
+          margin-top: -17px;
+        }
+     }
+
+  > div > .mfw-spin-lg {
+    .mfw-spin-dot {
+      margin: -16px;
+    }
+    .mfw-spin-text {
+       padding-top: 11px;
+    }
+    &.mfw-spin-show-text .mfw-spin-dot {
+      margin-top: -26px;
+    }
+  }
+}
+
+&-container {
+  position: relative;
+  transition: opacity .3s;
+  zoom: 1;
+  &:before,
+  &:after {
+    content: "";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+&-blur {
+  pointer-events: none;
+  user-select: none;
+  overflow: hidden;
+  opacity: 0.5;
+  -webkit-filter: blur(0.5px);
+  filter: blur(0.5px);
+
+  &:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: #fff;
+    opacity: 0.3;
+    transition: all .3s;
+    z-index: 10;
+  }
+}
+
+// tip
+// ------------------------------
+&-tip {
+  color: transparentize(#000, 0.45);
+}
+
+// dots
+// ------------------------------
+
+&-dot {
+  position: relative;
+  display: inline-block;
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+
+  i {
+    width: 9px;
+    height: 9px;
+    border-radius: 100%;
+    background-color: #1890ff;
+    transform: scale(0.75);
+    display: block;
+    position: absolute;
+    opacity: 0.3;
+    animation: antSpinMove 1s infinite linear alternate;
+    transform-origin: 50% 50%;
+    &:nth-child(1) {
+      left: 0;
+      top: 0;
+    }
+    &:nth-child(2) {
+      right: 0;
+      top: 0;
+      animation-delay: 0.4s;
+    }
+    &:nth-child(3) {
+      right: 0;
+      bottom: 0;
+      animation-delay: 0.8s;
+    }
+    &:nth-child(4) {
+      left: 0;
+      bottom: 0;
+      animation-delay: 1.2s;
+    }
+  }
+
+  &-spin {
+    transform: rotate(45deg);
+    animation: mfwRotate 1.2s infinite linear;
+  }
+}
+
+  @keyframes loadingCircle {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+// Sizes
+// ------------------------------
+
+  // small
+  &-sm &-dot {
+    font-size: 14px;
+    width: 14px;
+    height: 14px;
+
+    i {
+      width: 6px;
+      height: 6px;
+    }
+  }
+
+  // large
+  &-lg &-dot {
+    font-size: 32px;
+    width: 32px;
+    height: 32px;
+
+    i {
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  //&&-show-text &-text {
+  //  display: block;
+  //}
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  /* IE10+ */
+  .mfw-spin-blur {
+     background: #fff;
+     opacity: 0.5;
+  }
+}
+
+@keyframes antSpinMove {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes mfwRotate {
+  to {
+    transform: rotate(405deg);
+  }
+}
+
+
+.mfw-spin-nested-loading>div>.mfw-spin .mfw-spin-dot{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -15px;
+}

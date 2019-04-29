@@ -1,0 +1,82 @@
+@import "../../styles/index.scss";
+$item-prefix-cls: "item";
+$cell-prefix-cls: "cell-wrap";
+
+.#{$item-prefix-cls} {
+  display: flex;
+  padding: 12px 24px;
+  overflow: hidden;
+  // text-overflow: ellipsis;
+  border-bottom: 1px solid $black-15;
+  &:last-child {
+    border-bottom: 0;
+  }
+  a {
+    display: flex;
+    text-decoration: none;
+  }
+  .title {
+    color: $black-65;
+  }
+  .desc {
+    color: $black-45;
+  }
+  &.isTableStyle {
+    padding: 0;
+    min-height: 54px;
+    vertical-align: middle;
+    // line-height: 54px;
+    text-align: left;
+    .#{$cell-prefix-cls} {
+      flex: 1;
+      display: flex;
+      .#{$cell-prefix-cls}-name {
+        width: 100px;
+        line-height: 54px;
+        flex-shrink: 0;
+        text-indent: 16px;
+        font-weight: bold;
+        color: $black-65;
+        background-color: $black-5;
+      }
+      .#{$cell-prefix-cls}-desc {
+        padding: 16px 0;
+        font-size: 14px;
+        color: $black-65;
+        &.is-bold {
+          font-weight: bold;
+        }
+        a {
+          color: $black-65;
+        }
+        &.link a {
+          margin: 0 16px;
+          color: $blue;
+        }
+        .text {
+          margin: 0 16px;
+        }
+      }
+    }
+    &:first-child {
+      .#{$cell-prefix-cls}-name {
+        border-top-left-radius: 4px;
+      }
+    }
+    &:last-child {
+      .#{$cell-prefix-cls}-name {
+        border-bottom-left-radius: 4px;
+      }
+    }
+  }
+  img {
+    width: 32px;
+    height: 32px;
+    margin-top: 3px;
+    margin-right: 16px;
+    border-radius: 50%;
+  }
+  .content {
+    width: auto;
+  }
+}

@@ -1,0 +1,178 @@
+@import "../../styles/index.scss";
+
+$modal-prefix-cls: "modal";
+
+.#{$modal-prefix-cls} {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: 0 auto;
+  overflow: auto;
+  z-index: $modal-zIndex;
+  box-sizing: border-box;
+  &.is-show {
+    display: block;
+  }
+  &-mask {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba($color: $black, $alpha: 0.45);
+  }
+
+  &-wrapper {
+    position: relative;
+    z-index: 2;
+    margin: 0 auto;
+    top: 100px;
+  }
+
+  &-size-large {
+    width: 75%;
+  }
+
+  &-size-default {
+    width: 50%;
+  }
+
+  &-size-small {
+    width: 420px;
+  }
+
+  &-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    border: none;
+    border-radius: 4px;
+    box-sizing: border-box;
+    @include normalShadow();
+    &.#{$modal-prefix-cls}-confirm {
+      padding: 8px;
+      .#{$modal-prefix-cls}-close {
+        right: 24px;
+      }
+    }
+    &-header {
+      position: relative;
+      padding: 16px 26px 16px 16px;
+      box-sizing: border-box;
+      &-title {
+        display: flex;
+        .title-center {
+          display: flex;
+          justify-content: center;
+          flex: 1;
+        }
+      }
+    }
+    &-body {
+      flex: 1;
+      padding: 8px 16px;
+      font-size: 14px;
+      color: $black-65;
+      overflow-y: auto;
+      box-sizing: border-box;
+    }
+    &-footer {
+      display: inline-block;
+      width: 100%;
+      text-align: right;
+      padding: 16px;
+      box-sizing: border-box;
+    }
+  }
+  &-close {
+    position: absolute;
+    top: 15px;
+    right: 16px;
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+    font-size: 14px;
+    padding: 0;
+  }
+  &-icon-success {
+    color: $green;
+  }
+  &-icon-warning {
+    color: $yellow;
+  }
+  &-icon-info {
+    color: $blue;
+  }
+  &-icon-error {
+    color: $red;
+  }
+}
+
+// scale animation
+.mode-scale-appear,
+.mode-scale-enter {
+  transform: scale(0);
+  transition: all 0.2s;
+}
+
+.mode-scale-appear-active,
+.mode-scale-enter-active {
+  transform: scale(1);
+}
+
+.mode-scale-enter-done {
+  transform: scale(1);
+}
+
+.mode-scale-exit {
+  transform: scale(1);
+  transition: all 0.2s;
+}
+
+.mode-scale-exit-active,
+.mode-scale-exit-done {
+  transform: scale(0);
+}
+
+.mode-scale-exit-done {
+  display: none;
+}
+
+// fade animation
+.mode-fade-appear,
+.mode-fade-enter {
+  opacity: 0;
+  transition: all 0.2s;
+}
+
+.mode-fade-appear-active,
+.mode-fade-enter-active {
+  opacity: 1;
+}
+
+.mode-fade-exit {
+  opacity: 1;
+  transition: all 0.2s;
+}
+
+.mode-fade-exit-active,
+.mode-fade-exit-done {
+  opacity: 0;
+}
+
+.mode-fade-enter-done {
+  opacity: 1;
+}
+
+.mode-fade-exit-done {
+  display: none;
+}

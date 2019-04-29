@@ -1,0 +1,222 @@
+@import "../../styles/index.scss";
+
+$table-prefix-cls: "table";
+
+.#{$table-prefix-cls} {
+  position: relative;
+  font-size: $base-font-size;
+  font-variant: tabular-nums;
+  line-height: 1.5;
+  color: $black-65;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  clear: both;
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    text-align: left;
+    border-radius: 4px 4px 0 0;
+  }
+
+  &-thead {
+    & > tr {
+      & > th {
+        background: $black-5;
+        transition: background 0.3s ease;
+        text-align: left;
+        vertical-align: middle;
+        color: $black-85;
+        font-weight: 500;
+        border-bottom: 1px solid $black-15;
+      }
+    }
+    &-sorter {
+      &:hover {
+        background: $black-10;
+      }
+      &-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+      }
+      &-button {
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        font-size: 12px;
+        .icon {
+          &::before {
+            line-height: 8px;
+          }
+        }
+        .is-active {
+          color: $blue;
+        }
+      }
+    }
+  }
+
+  &-tbody {
+    & > tr {
+      transition: all 0.3s;
+      & > td {
+        transition: all 0.3s;
+        border-bottom: 1px solid $black-15;
+      }
+      &.is-selected {
+        & > td {
+          background: $black-5;
+        }
+      }
+      &:hover {
+        & > td {
+          background: rgba($color: $blue, $alpha: 0.1);
+        }
+      }
+    }
+    .#{$table-prefix-cls}-expanded-row {
+      background-color: $black-5;
+      & > td {
+        &:last-child {
+          padding: 0 16px 0 50px;
+        }
+      }
+      tr:last-child {
+        td {
+          border: none;
+        }
+      }
+      &:hover {
+        & > td {
+          background-color: $black-5;
+        }
+      }
+    }
+    &-empty {
+      text-align: center;
+    }
+  }
+
+  &-thead > tr > th,
+  &-tbody > tr > td {
+    word-break: break-word;
+    color: $black-65;
+    &.selection-column {
+      min-width: 60px;
+      width: 60px;
+      text-align: center;
+      .checkbox-wrapper {
+        vertical-align: middle;
+      }
+    }
+  }
+
+  &-thead.#{$table-prefix-cls}-default > tr > th,
+  &-tbody.#{$table-prefix-cls}-default > tr > td {
+    padding: 16px 8px;
+  }
+
+  &-thead.#{$table-prefix-cls}-small > tr > th,
+  &-tbody.#{$table-prefix-cls}-small > tr > td {
+    padding: 8px;
+    font-size: $small-font-size;
+  }
+
+  &-thead.#{$table-prefix-cls}-large > tr > th,
+  &-tbody.#{$table-prefix-cls}-large > tr > td {
+    padding: 24px 16px;
+    font-size: $large-font-size;
+  }
+
+  &-head {
+    overflow: hidden;
+  }
+
+  &-scroll {
+    overflow: hidden;
+  }
+
+  &-head-hide-scrollbar {
+    overflow: hidden;
+  }
+
+  &-body-hide-scrollbar {
+    position: relative;
+    background: #fff;
+  }
+
+  &-body {
+    background: #fff;
+  }
+
+  &.#{$table-prefix-cls}-bordered {
+    #{$table-prefix-cls} {
+      border: 1px solid $black-15;
+      & > .#{$table-prefix-cls}-thead > tr > th,
+      & > .#{$table-prefix-cls}-tbody > tr > td {
+        border-right: 1px solid $black-15;
+      }
+    }
+  }
+
+  &-pagination {
+    justify-content: flex-end;
+    &.#{$table-prefix-cls}-pagination-large {
+      margin: 24px 0;
+    }
+    &.#{$table-prefix-cls}-pagination-default {
+      margin: 24px 0;
+    }
+    &.#{$table-prefix-cls}-pagination-large {
+      margin: 16px 0;
+    }
+  }
+
+  &-expand-cell {
+    text-align: center;
+    &-icon {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      line-height: 13px;
+      text-align: center;
+      cursor: pointer;
+      border: 1px solid $black-15;
+      background-color: #fff;
+      &:after {
+        content: "+";
+      }
+      &.is-expanded {
+        &:after {
+          content: "-";
+        }
+      }
+    }
+  }
+
+  &-fixed {
+    position: absolute;
+    top: 0;
+    &.is-left {
+      left: 0;
+      @include normalShadow(6px, 0, 6px, -4px);
+    }
+    &.is-right {
+      right: 0;
+      @include normalShadow(-6px, 0, 6px, -4px);
+    }
+
+    table {
+      width: auto;
+    }
+
+    // .#{$table-prefix-cls}-body {
+    //   padding-right: 10px;
+    //   margin-right: -10px;
+    // }
+  }
+}

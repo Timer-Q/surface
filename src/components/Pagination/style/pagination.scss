@@ -1,0 +1,122 @@
+@import "../../styles/index.scss";
+
+$pagination-prefix-cls: "pagination";
+
+@mixin item($size: 32px) {
+  position: relative;
+  min-width: $size;
+  height: $size;
+  line-height: $size - 2px;
+  text-align: center;
+  color: $black-65;
+  user-select: none;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  vertical-align: middle;
+  border-radius: 4px;
+  &:hover {
+    border-color: $blue;
+    color: $blue;
+  }
+}
+
+.#{$pagination-prefix-cls} {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  &.#{$pagination-prefix-cls}-default {
+    .#{$pagination-prefix-cls}-item {
+      @include item;
+      font-size: 14px;
+      border: 1px solid $black-15;
+      &.is-actived {
+        background: $blue;
+        color: #fff;
+        border-width: 0;
+      }
+      &.disabled {
+        opacity: 0.4;
+        pointer-events: none;
+      }
+    }
+    .#{$pagination-prefix-cls}-more,
+    .#{$pagination-prefix-cls}-item,
+    .#{$pagination-prefix-cls}-select,
+    .#{$pagination-prefix-cls}-extra {
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
+    }
+    .#{$pagination-prefix-cls}-select {
+      font-size: 14px;
+    }
+  }
+  &.#{$pagination-prefix-cls}-small {
+    .#{$pagination-prefix-cls}-item {
+      font-size: 12px;
+      border: 1px solid transparent;
+      @include item(22px);
+      &.is-actived {
+        color: $blue;
+        border-color: $blue;
+      }
+      &.disabled {
+        opacity: 0.4;
+        pointer-events: none;
+      }
+    }
+    .#{$pagination-prefix-cls}-more,
+    .#{$pagination-prefix-cls}-item,
+    .#{$pagination-prefix-cls}-select,
+    .#{$pagination-prefix-cls}-extra {
+      font-size: 12px;
+      &:not(:last-child) {
+        margin-right: 5px;
+      }
+    }
+    .#{$pagination-prefix-cls}-select {
+      .select-content-small {
+        line-height: 20px;
+        min-height: 22px;
+      }
+    }
+    .#{$pagination-prefix-cls}-extra {
+      .input-small {
+        height: 22px;
+      }
+    }
+  }
+
+  &-more {
+    @include item;
+    &-ellipsis {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+      &:hover {
+        opacity: 0;
+      }
+    }
+  }
+
+  &-select {
+    display: inline-block;
+    vertical-align: baseline;
+    width: 100px;
+  }
+  &-extra {
+    display: inline-block;
+    vertical-align: baseline;
+    .input-wrapper {
+      width: 50px;
+      margin: 0 5px;
+    }
+  }
+}

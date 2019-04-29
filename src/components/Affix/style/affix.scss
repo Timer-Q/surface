@@ -1,0 +1,7 @@
+@import "../../styles/index.scss";
+$affix-prefix-cls: "affix";
+
+.#{$affix-prefix-cls} {
+  display: flex;
+  box-sizing: border-box;
+}

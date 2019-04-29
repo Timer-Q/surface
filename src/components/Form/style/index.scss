@@ -1,0 +1,158 @@
+@import "../../styles/index.scss";
+$form-prefix-cls: "form";
+
+@mixin size($font-size: $base-font-size, $height: $base-height) {
+  font-size: $font-size;
+  margin-bottom: $height - 24px;
+  &.#{$form-prefix-cls}-item-horizontal {
+    display: inline-flex;
+    width: auto;
+    &:not(:last-child) {
+      margin-right: $height / 2;
+    }
+  }
+  &.#{$form-prefix-cls}-item-vertical {
+    flex-wrap: wrap;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  .row {
+    flex-wrap: nowrap;
+  }
+}
+
+.#{$form-prefix-cls} {
+  font-size: 14px;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  border-bottom: 1px solid $black-10;
+  padding: 24px 0;
+  &:nth-last-of-type(1) {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+  &-header {
+    margin: 0 0 24px 0;
+  }
+}
+
+.#{$form-prefix-cls}-header-wrapper {
+  .#{$form-prefix-cls}-header-wrapper {
+    font-size: 30px;
+  }
+  .#{$form-prefix-cls}-sub-header {
+    font-weight: 400;
+  }
+}
+
+// label 在 input 上面
+.#{$form-prefix-cls}-label-top {
+  .#{$form-prefix-cls}-item-label {
+    width: 100%;
+    padding-bottom: 5px;
+  }
+}
+// label 在 input 左边 且文字居左
+.#{$form-prefix-cls}-label-left {
+  .#{$form-prefix-cls}-item-label {
+    padding-right: 10px;
+    text-align: left;
+    width: 120px;
+  }
+}
+// label 在 input 左边 且 文字居右
+.#{$form-prefix-cls}-label-right {
+  .#{$form-prefix-cls}-item-label {
+    padding-right: 10px;
+    text-align: right;
+    width: 120px;
+  }
+}
+
+// form-item
+.#{$form-prefix-cls}-item {
+  display: flex;
+  position: relative;
+  align-items: center;
+  color: $black-65;
+  vertical-align: middle;
+  &.#{$form-prefix-cls}-item-default {
+    @include size();
+  }
+  &.#{$form-prefix-cls}-item-tiny {
+    @include size($tiny-font-size, $tiny-height);
+  }
+  &.#{$form-prefix-cls}-item-small {
+    @include size($small-font-size, $small-height);
+  }
+  &.#{$form-prefix-cls}-item-large {
+    @include size($large-font-size, $large-height);
+  }
+}
+// form-item-header
+.#{$form-prefix-cls}-item-header {
+  width: 100%;
+  margin-top: 0;
+  margin-bottom: 8px;
+  &-label {
+    padding: 3px 7px;
+    margin-right: 20px;
+    background: $black-65;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 4px;
+  }
+  &-content {
+    display: inline-block;
+  }
+}
+// form-item-lable
+.#{$form-prefix-cls}-item-label {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  box-sizing: border-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 8px;
+}
+
+// form-item-wrapper
+.#{$form-prefix-cls}-item-wrapper {
+  flex: 1;
+  display: inline-block;
+  position: relative;
+  width: 100%;
+}
+
+// form-item-error
+.#{$form-prefix-cls}-item-error {
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  left: 0;
+  color: $red;
+  font-size: 12px;
+  text-align: left;
+}
+
+.#{$form-prefix-cls}-item-required {
+  &::before {
+    display: inline-block;
+    margin-right: 4px;
+    content: "*";
+    color: $red;
+  }
+}
+
+.#{$form-prefix-cls}-vertical {
+  .#{$form-prefix-cls}-item {
+    flex-wrap: wrap;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

@@ -1,0 +1,51 @@
+@import "../../styles/index.scss";
+$list-prefix-cls: "list";
+
+.#{$list-prefix-cls} {
+  position: relative;
+  font-size: 14px;
+  font-variant: tabular-nums;
+  line-height: 1.5;
+  color: $black-65;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  header,
+  footer {
+    padding: 12px 24px;
+  }
+  header {
+    border-bottom: 1px solid $black-15;
+  }
+
+  &-custom {
+    display: flex;
+    padding: 12px 24px;
+    overflow: hidden;
+    border-bottom: 1px solid $black-15;
+  }
+  &.bordered {
+    border-radius: 4px;
+    border: 1px solid $black-15;
+  }
+  &.default .item {
+    padding: 12px 24px;
+  }
+  &.small {
+    font-size: 12px;
+    .item,
+    header,
+    footer {
+      padding: 8px 24px;
+    }
+  }
+  &.large {
+    font-size: 16px;
+    .item,
+    header,
+    footer {
+      padding: 16px 24px;
+    }
+  }
+}

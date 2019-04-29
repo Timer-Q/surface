@@ -1,0 +1,17 @@
+// colorPalette function
+@function colorPalette($color, $opacity) {
+  @return lighten($color, 100% - $opacity);
+}
+// colorPalette mixin
+@mixin colorPalette($opacity: 0.65) {
+  opacity: $opacity;
+}
+
+@function colorTransformPalette($color, $level: 6) {
+  $constLevel: 6;
+  @if $level <= 6 {
+    @return lighten($color, ($constLevel - $level) / 10 * 100%);
+  } @else {
+    @return darken($color, ($level - $constLevel) / 10 * 100%);
+  }
+}

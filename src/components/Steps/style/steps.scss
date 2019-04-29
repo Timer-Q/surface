@@ -1,0 +1,132 @@
+@import "../../styles/index.scss";
+$steps-prefix-cls: "steps";
+
+.#{$steps-prefix-cls} {
+  display: flex;
+  box-sizing: border-box;
+  &-item {
+    position: relative;
+    flex: 1;
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      left: 50%;
+      top: 18px;
+      width: 134px;
+      height: 1px;
+      background: $black-25;
+    }
+    &:last-child {
+      flex: none;
+      &:after {
+        display: none;
+      }
+    }
+    &-title {
+      width: 36px;
+      height: 36px;
+      line-height: 34px;
+      overflow: hidden;
+      margin-left: 50px;
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+      border: 1px solid $black-45;
+      border-radius: 50%;
+      background: #fff;
+      color: $black-65;
+    }
+    .current-title {
+      color: #fff;
+      background-color: $blue;
+      border: 1px solid $blue;
+    }
+    &-done {
+      border-color: $blue;
+      &:after {
+        content: "";
+        display: block;
+        width: 8px;
+        height: 17px;
+        border-bottom: 2px solid $blue;
+        border-right: 2px solid $blue;
+        transform: translate(13px, 5px) rotate(45deg);
+      }
+    }
+    &-name {
+      display: inline-block;
+      text-decoration: none;
+      width: 140px;
+      text-align: center;
+      margin-top: 12px;
+      font-size: 14px;
+      font-family: MicrosoftYaHei;
+      color: $black-85;
+      line-height: 19px;
+    }
+  }
+  .show {
+    display: inline-block;
+  }
+  .hide {
+    display: none;
+  }
+  .current {
+    color: $blue;
+  }
+}
+.steps-vertical {
+  flex-direction: column;
+  max-width: 320px;
+  &-item {
+    position: relative;
+    display: flex;
+    justify-content: start;
+    min-height: 24px;
+    line-height: 24px;
+    padding: 10px 0;
+    margin: 0 10px;
+    font-size: 14px;
+    color: $black-65;
+    box-sizing: border-box;
+    &:after {
+      position: absolute;
+      content: "";
+      display: block;
+      left: 4px;
+      top: 18px;
+      width: 2px;
+      height: 100%;
+      background: $black-10;
+    }
+    &:last-child:after {
+      height: 0;
+    }
+    &-left {
+      display: flex;
+      width: 160px;
+    }
+    &-name {
+      margin-left: 8px;
+    }
+    &-dot {
+      position: relative;
+      flex-shrink: 0;
+      box-sizing: border-box;
+      width: 10px;
+      height: 10px;
+      margin-top: 7px;
+      background: #fff;
+      border: 2px solid $black-15;
+      border-radius: 50%;
+      z-index: 1;
+    }
+    &-title {
+      color: $black-45;
+    }
+  }
+  .done {
+    border-color: $blue;
+  }
+}

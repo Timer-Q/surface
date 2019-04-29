@@ -1,0 +1,157 @@
+@import "../../styles/index.scss";
+
+$tree: 'tree';
+
+.#{$tree}-ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  .tree-li{
+    list-style: none;
+  }
+  .tree-v-h{
+    visibility: hidden;
+  }
+  &.tree-ul-open{
+    animation: treeulopen 1s ease 0s 1 forwards;
+  }
+  &.tree-ul-close{
+    display: none;
+  }
+  .tree-li-html{
+    display: inline-block;
+  }
+  .tree-extra-test{
+    height: 24px;
+    display: flex;
+    align-items: center;
+  }
+  .tree-height-full{
+    height: 100%;
+    padding: 8px 0;
+  }
+  li ul{
+    margin: 0;
+    padding: 0 0 0 18px;
+  }
+  li{
+    font-size: 14px;
+    margin: 0px;
+  }
+  .tree-ui-style{
+    padding: 0px!important;
+  }
+  .w-18{
+    width: 18px;
+  }
+  
+  .background-grey{
+    background: rgb(243, 245, 248);
+  }
+  .background-selected{
+    background: rgb(254, 254, 254);
+  }
+  .text-color-ui{
+    color: rgb(114, 149, 247) !important;
+  }
+  .p-l-18{
+    padding-left: 18px;
+  }
+  .tree-li-title{
+    display: inline-block;
+    padding: 0 5px;
+    border-radius: 2px;
+    margin: 0;
+    text-decoration: none;
+    vertical-align: top;
+    color: rgba(0,0,0,.65);
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    height: 24px;
+    line-height: 24px;
+  }
+  .tree-li-selected{
+      background: #bae7ff;
+  }
+  .tree-li-unselected{
+    &:hover{
+        background:rgb(233, 247, 254)
+    }
+  }
+  .text-disabled{
+      color: #a0a0a0;
+      cursor: not-allowed!important;
+  }
+  .tree-li-checkbox{
+    display: inline-flex;
+    padding: 0 5px;
+    border-radius: 2px;
+    margin: 0;
+    cursor: pointer;
+    text-decoration: none;
+    color: rgba(0,0,0,.65);
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    height: 24px;
+    align-items: center;
+  }
+  .tree-li-icon{
+    margin: 0;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    display: inline-block;
+    vertical-align: top;
+    border: 0 none;
+    cursor: pointer;
+    color: rgba(0,0,0,.65);
+    outline: none;
+    text-align: center;
+    svg {
+        -webkit-transition: -webkit-transform .3s;
+        transition: -webkit-transform .3s;
+        transition: transform .3s;
+        transition: transform .3s,-webkit-transform .3s;
+    }
+  }
+  .tree-switch-open{
+    svg{
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+  }
+  .tree-switch-close{
+    svg{
+        -webkit-transform: rotate(-90deg);
+        -ms-transform: rotate(-90deg);
+        transform: rotate(-90deg);
+    }
+  }
+  .text-searched-bold{
+    font-weight: bold;
+  }
+  .tree-icon{
+    font-style: normal;
+    vertical-align: -.125em;
+    text-align: center;
+    text-transform: none;
+    line-height: 0;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+  .tree-switch-icon{
+      transform: scale(.9) rotate(0deg);
+      display: inline-block;
+      font-weight: 700;
+      font-size: 12px;
+  }
+  @keyframes treeulopen {
+      from{
+          max-height: 0px;
+      }
+      to{
+          max-height: 2000px;
+      }
+  }
+}

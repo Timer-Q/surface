@@ -1,0 +1,204 @@
+@import '../../styles/index.scss';
+@import '../../styles/mixins.scss';
+
+$upload-prefix-cls: 'upload';
+
+$item-width: 250px;
+$item-height: 155px;
+
+@mixin upload-button() {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  background: rgba($color: #000, $alpha: 0.65);
+  color: #fff;
+  transition: all 0.3s;
+  font-size: 12px;
+  padding: 5px;
+  cursor: pointer;
+  &:hover {
+    @include normalShadow();
+    border-color: $blue;
+    color: $blue;
+  }
+}
+
+@mixin item-wrapper($size: 'default') {
+  display: inline-flex;
+  box-sizing: border-box;
+  @if ($size == 'small') {
+    width: $item-width / 2;
+    height: $item-height / 2;
+  } @else {
+    width: $item-width;
+    height: $item-height;
+  }
+  border-radius: 4px;
+  margin-bottom: 5px;
+  border: 1px solid $black-15;
+  vertical-align: middle;
+  align-items: center;
+  overflow: hidden;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.#{$upload-prefix-cls},
+.#{$upload-prefix-cls}-list-item,
+.#{$upload-prefix-cls}-list-texy-item {
+  &.is-disabled {
+    pointer-events: none;
+  }
+}
+.#{$upload-prefix-cls}-title {
+  @include title();
+}
+
+.#{$upload-prefix-cls}-select {
+  justify-content: center;
+  cursor: pointer;
+  transition: color 0.3s;
+  &:hover {
+    color: $blue;
+  }
+  &.#{$upload-prefix-cls}-select-default {
+    @include item-wrapper();
+  }
+  &.#{$upload-prefix-cls}-select-small {
+    @include item-wrapper('small');
+  }
+  &-text {
+    .icon {
+      font-size: 16px;
+      margin-right: 5px;
+    }
+  }
+}
+
+.#{$upload-prefix-cls}-list {
+  display: inline;
+  box-sizing: border-box;
+  .#{$upload-prefix-cls}-list-item {
+    position: relative;
+    margin-right: 10px;
+    &.#{$upload-prefix-cls}-list-item-default {
+      @include item-wrapper();
+    }
+    &.#{$upload-prefix-cls}-list-item-small {
+      @include item-wrapper('small');
+    }
+
+    img {
+      width: 100%;
+      border-radius: 4px;
+    }
+    video {
+      width: 100%;
+      border-radius: 4px;
+    }
+
+    &:hover {
+      .#{$upload-prefix-cls}-list-actions-item {
+        transform: translateX(0);
+      }
+    }
+
+    .#{$upload-prefix-cls}-progress,
+    .#{$upload-prefix-cls}-error {
+      position: absolute;
+      z-index: 50;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-color: rgba($color: #000000, $alpha: 0.5);
+      transition: all 0.3s linear;
+    }
+
+    .#{$upload-prefix-cls}-progress-loading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .#{$upload-prefix-cls}-error {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      cursor: pointer;
+      &-text {
+        width: 100%;
+        text-align: center;
+        color: #fff;
+      }
+    }
+  }
+  .#{$upload-prefix-cls}-list-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    z-index: 101;
+    top: 10px;
+    left: 0;
+    width: 100%;
+    padding-left: 10px;
+    box-sizing: border-box;
+    &-item {
+      &:last-child {
+        height: 22px;
+        line-height: 22px;
+        border: 1px solid $black-45;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 11px;
+        border-top-left-radius: 11px;
+        transform: translateX(120%);
+      }
+      &:first-child {
+        width: 25px;
+        height: 25px;
+        border-radius: 50px;
+        border: 1px solid transparent;
+        transform: translateX(-150%);
+      }
+      @include upload-button();
+    }
+  }
+  &-text-item {
+    width: 100%;
+    font-size: 14px;
+    margin-top: 5px;
+    &-info {
+      display: inline-flex;
+      justify-content: space-between;
+      width: 100%;
+      padding: 5px;
+      color: $black-45;
+      transition: background-color 0.2s;
+      .icon {
+        &:not(:last-child) {
+          margin-right: 5px;
+        }
+      }
+      .action {
+        cursor: pointer;
+      }
+      &.upload-done {
+        color: $blue;
+      }
+      &.upload-error {
+        color: $red;
+      }
+      &:hover {
+        background: rgba($color: $blue, $alpha: 0.2);
+      }
+    }
+    &-content {
+      color: inherit;
+      text-decoration: none;
+    }
+  }
+}

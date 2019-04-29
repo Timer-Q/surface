@@ -1,0 +1,31 @@
+@import "../../styles/index.scss";
+
+$layout-pre-cls: "layout";
+
+.#{$layout-pre-cls} {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  flex: 1;
+  &.has-sider {
+    flex-direction: row;
+    .#{$layout-pre-cls}-content {
+      flex: 1;
+    }
+  }
+  &-header,
+  &-footer,
+  &-content {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  &-sider {
+    position: relative;
+    transition: all 0.3s;
+    &-children {
+      height: 100%;
+      padding-top: 0.1px;
+      margin-top: -0.1px;
+    }
+  }
+}

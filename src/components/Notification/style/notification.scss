@@ -1,0 +1,83 @@
+@import "../../styles/index.scss";
+
+$notification-prefix-cls: "notification";
+$notice-prefix-cls: "notice";
+
+.#{$notification-prefix-cls} {
+  display: inline-block;
+  position: fixed;
+  z-index: $message-zIndex;
+  top: 24px;
+  font-size: 14px;
+  margin-right: 24px;
+  box-sizing: border-box;
+  .#{$notice-prefix-cls} {
+    position: relative;
+    background: #fff;
+    border-radius: 4px;
+    padding: 16px;
+    box-sizing: border-box;
+    line-height: 1.5;
+    width: 384px;
+    @include normalShadow();
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+    &-close {
+      position: absolute;
+      top: 0;
+      right: 0;
+      color: $black-15;
+      cursor: pointer;
+    }
+    &-header {
+      position: relative;
+      color: $black-85;
+      font-size: 16px;
+      padding-right: 16px;
+      min-height: 1em;
+      margin-bottom: 8px;
+      &-icon {
+        margin-right: 4px;
+      }
+    }
+    &-content {
+      font-size: 14px;
+      color: $black-65;
+    }
+    &-footer {
+      margin-top: 8px;
+      text-align: right;
+    }
+  }
+
+  .#{$notice-prefix-cls}-info {
+    .#{$notice-prefix-cls}-header-icon {
+      color: $blue;
+    }
+  }
+
+  .#{$notice-prefix-cls}-success {
+    .#{$notice-prefix-cls}-header-icon {
+      color: $green;
+    }
+  }
+
+  .#{$notice-prefix-cls}-warning {
+    .#{$notice-prefix-cls}-header-icon {
+      color: $yellow;
+    }
+  }
+
+  .#{$notice-prefix-cls}-warn {
+    .#{$notice-prefix-cls}-header-icon {
+      color: $yellow;
+    }
+  }
+  
+  .#{$notice-prefix-cls}-error {
+    .#{$notice-prefix-cls}-header-icon {
+      color: $red;
+    }
+  }
+}

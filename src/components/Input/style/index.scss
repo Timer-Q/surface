@@ -1,0 +1,366 @@
+@import "../../styles/index.scss";
+$input-prefix-cls: "input";
+
+input[type="number"] {
+  box-shadow: none;
+}
+
+// input addon base css
+@mixin input-base {
+  display: inline-block;
+  background: inherit;
+  color: $black-65;
+  padding: 4px 10px;
+  border: 1px solid $black-15;
+  height: $base-height;
+  font-size: $base-font-size;
+  transition: all 0.3s;
+  outline: 0;
+  box-sizing: border-box;
+  @include placeholder($black);
+}
+
+@mixin size($font-size: $base-font-size, $height: $base-height) {
+  $padding-vertical: $height / 2 - $font-size;
+  $padding-horizontal: $font-size / 2;
+  font-size: $font-size;
+  padding: $padding-vertical $padding-horizontal;
+  height: $height;
+  &.textarea {
+    min-height: $height;
+  }
+  .#{$input-prefix-cls}-title {
+    font-size: $font-size;
+  }
+}
+
+@mixin title-size($font-size: $base-font-size, $height: $base-height) {
+  $padding-vertical: $font-size / 2;
+  $padding-horizontal: $font-size / 2;
+  .#{$input-prefix-cls}-title {
+    font-size: $font-size;
+    padding-top: $padding-vertical;
+    padding-left: $padding-horizontal;
+    line-height: 1;
+  }
+}
+
+@mixin default {
+  @include size();
+}
+
+@mixin large {
+  @include size($large-font-size, $large-height);
+}
+
+@mixin small {
+  @include size($small-font-size, $small-height);
+}
+
+@mixin tiny {
+  @include size($tiny-font-size, $tiny-height);
+}
+
+@mixin hover($color) {
+  border-color: $color;
+}
+
+@mixin active($color) {
+  border-color: $color;
+  box-shadow: 0 0 3px 2px colorPalette($color, 70%);
+}
+
+.#{$input-prefix-cls}-wrapper {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  background: #fff;
+  &.is-disabled {
+    @include colorPalette(0.65);
+    cursor: not-allowed;
+    .#{$input-prefix-cls},
+    .#{$input-prefix-cls}-addon {
+      background-color: $black-5;
+      user-select: none;
+      &:hover {
+        @include hover($black-15);
+      }
+    }
+    & > * {
+      pointer-events: none;
+    }
+  }
+}
+// input
+.#{$input-prefix-cls} {
+  @include input-base;
+  width: 100%;
+  border-radius: 4px;
+  &:hover {
+    @include hover($blue);
+  }
+  &:focus {
+    @include active($blue);
+  }
+  &.without-border {
+    border: none;
+    &:focus {
+      box-shadow: none;
+    }
+  }
+  &-title {
+    color: $black-65;
+  }
+}
+
+textarea.#{$input-prefix-cls} {
+  max-width: 100%;
+  max-height: 136px;
+  min-height: 2em;
+  height: auto;
+}
+
+.#{$input-prefix-cls}-default {
+  @include default();
+}
+.#{$input-prefix-cls}-large {
+  @include large();
+}
+
+.#{$input-prefix-cls}-small {
+  @include small();
+}
+
+.#{$input-prefix-cls}-tiny {
+  @include tiny();
+}
+
+// affix
+.#{$input-prefix-cls}-affix-wrapper {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+
+  .#{$input-prefix-cls}-prefix,
+  .#{$input-prefix-cls}-suffix {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: $black-25;
+    line-height: 0;
+    &-error {
+      color: $red;
+    }
+    &-bottom {
+      top: auto;
+      bottom: 10px;
+    }
+  }
+
+  &.#{$input-prefix-cls}-affix-text {
+    .#{$input-prefix-cls}-prefix {
+      left: 10px;
+    }
+    .#{$input-prefix-cls}-suffix {
+      right: 10px;
+    }
+  }
+
+  &.#{$input-prefix-cls}-affix-button {
+    .#{$input-prefix-cls}-prefix {
+      left: 0;
+      .#{$input-prefix-cls}-affix-button {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+    }
+    .#{$input-prefix-cls}-suffix {
+      right: 0;
+      .#{$input-prefix-cls}-affix-button {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }
+  }
+
+  .#{$input-prefix-cls}:first-child {
+    padding-right: 30px;
+  }
+  .#{$input-prefix-cls}:last-child {
+    padding-left: 30px;
+  }
+  .#{$input-prefix-cls}:not(:first-child):not(:last-child) {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+.#{$input-prefix-cls}-counter {
+  .#{$input-prefix-cls}:first-child {
+    padding-right: 60px;
+  }
+  .#{$input-prefix-cls}:not(:first-child):not(:last-child) {
+    padding-left: 30px;
+    padding-right: 50px;
+  }
+}
+
+// addon
+.#{$input-prefix-cls}-addon-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  .#{$input-prefix-cls}-addon {
+    @include input-base;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    .#{$input-prefix-cls} {
+      height: 38px;
+    }
+  }
+  .#{$input-prefix-cls}-addon:first-child {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-right: none;
+  }
+  .#{$input-prefix-cls}-addon:last-child {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-left: none;
+  }
+  &.#{$input-prefix-cls}-addon-large {
+    .#{$input-prefix-cls}-addon {
+      @include large;
+      .#{$input-prefix-cls} {
+        height: 48px;
+      }
+    }
+  }
+  &.#{$input-prefix-cls}-addon-small {
+    .#{$input-prefix-cls}-addon {
+      @include small;
+      .#{$input-prefix-cls} {
+        height: 28px;
+      }
+    }
+  }
+  .#{$input-prefix-cls}:last-child {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  .#{$input-prefix-cls}:first-child {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .#{$input-prefix-cls}:not(:first-child):not(:last-child) {
+    border-radius: 0;
+  }
+}
+
+// mode === group
+&.#{$input-prefix-cls}-group-normal {
+  border: 1px solid $black-15;
+  border-radius: 4px;
+}
+
+.#{$input-prefix-cls}-group-wrapper {
+  display: flex;
+  vertical-align: middle;
+  &:not(:last-child) {
+    margin-right: 10px;
+  }
+  &.#{$input-prefix-cls}-group-default {
+    @include title-size($base-font-size, $base-height);
+  }
+  &.#{$input-prefix-cls}-group-tiny {
+    @include title-size($tiny-font-size, $tiny-height);
+  }
+  &.#{$input-prefix-cls}-group-small {
+    @include title-size($small-font-size, $small-height);
+  }
+  &.#{$input-prefix-cls}-group-large {
+    @include title-size($large-font-size, $small-height);
+  }
+  .#{$input-prefix-cls}-group {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    &:first-child {
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+      .#{$input-prefix-cls} {
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+      }
+    }
+    &:last-child {
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
+      border-right: none;
+      .#{$input-prefix-cls} {
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+      }
+    }
+
+    &:not(:last-child) {
+      border-right: 1px solid $black-15;
+    }
+
+    &-title {
+      padding-top: 5px;
+      padding-left: 10px;
+    }
+    .#{$input-prefix-cls} {
+      border-radius: 0;
+      border-color: transparent;
+      &:focus,
+      &:hover {
+        box-shadow: none;
+        border-color: transparent;
+      }
+    }
+  }
+
+  // mode === list
+  &.#{$input-prefix-cls}-group-list {
+    margin-right: 0;
+    .#{$input-prefix-cls}-group {
+      border-radius: 0;
+      border: none;
+    }
+    &:not(:last-child) {
+      .#{$input-prefix-cls}-group {
+        border-bottom: 1px solid $black-15;
+      }
+    }
+  }
+  &.#{$input-prefix-cls}-group-no-division {
+    .#{$input-prefix-cls}-group {
+      border: none;
+    }
+  }
+}
+
+// error 状态下
+.has-error {
+  .#{$input-prefix-cls},
+  .#{$input-prefix-cls}-addon,
+  .#{$input-prefix-cls}-group-wrapper {
+    border-color: $red;
+    &:focus {
+      @include active($red);
+    }
+  }
+}
+
+// textarea suffix
+.textarea-suffix {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  transition: color 0.2s;
+  &-error {
+    color: $red;
+  }
+}

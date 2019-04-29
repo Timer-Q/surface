@@ -1,0 +1,126 @@
+@import "../../styles/index.scss";
+$switch-prefix-cls: "switch";
+
+$duration: 0.3s;
+$switch-width: 44px;
+$switch-height: 22px;
+$switch-sm-width: 28px;
+$switch-sm-height: 16px;
+$switch-bg-width: 56px;
+$switch-bg-height: 28px;
+
+.#{$switch-prefix-cls} {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  width: #{$switch-width};
+  height: #{$switch-height};
+  line-height: #{$switch-height - 2px};
+  padding: 0;
+  vertical-align: middle;
+  border-radius: #{$switch-height - 2px};
+  border: 1px solid $black-15;
+  background-color: $black-15;
+  cursor: pointer;
+  transition: all #{$duration} ease-in-out;
+  outline: none;
+  &-inner {
+    color: #fff;
+    font-size: 12px;
+    position: absolute;
+    left: 24px;
+    top: 0;
+  }
+  &:after {
+    position: absolute;
+    width: #{$switch-height - 4px};
+    height: #{$switch-height - 4px};
+    left: 2px;
+    top: 1px;
+    border-radius: 50% 50%;
+    background-color: #fff;
+    content: " ";
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+
+  &.#{$switch-prefix-cls}-enable {
+    &:hover {
+      &:after {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  &-checked {
+    border: 1px solid #{$blue};
+    background-color: #{$blue};
+
+    .#{$switch-prefix-cls}-inner {
+      left: 6px;
+    }
+
+    &:after {
+      left: 22px;
+    }
+  }
+
+  &-disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+    &::after {
+      cursor: not-allowed;
+    }
+  }
+
+  &-label {
+    display: inline-block;
+    line-height: 20px;
+    font-size: 14px;
+    padding-left: 10px;
+    vertical-align: middle;
+    white-space: normal;
+    pointer-events: none;
+    user-select: text;
+  }
+
+  &-small {
+    width: #{$switch-sm-width};
+    height: #{$switch-sm-height};
+    line-height: #{$switch-sm-height - 2px};
+    border-radius: #{$switch-sm-height - 2px};
+    &:after {
+      width: #{$switch-sm-height - 4px};
+      height: #{$switch-sm-height - 4px};
+    }
+    .#{$switch-prefix-cls}-inner {
+      left: 3px;
+      transform: scale(0.8);
+    }
+    &.#{$switch-prefix-cls}-checked {
+      &:after {
+        left: #{$switch-sm-width - $switch-sm-height + 2px};
+      }
+    }
+  }
+
+  &-large {
+    width: #{$switch-bg-width};
+    height: #{$switch-bg-height};
+    line-height: #{$switch-bg-height - 2px};
+    border-radius: #{$switch-bg-height - 2px};
+    &:after {
+      width: #{$switch-bg-height - 4px};
+      height: #{$switch-bg-height - 4px};
+    }
+    .#{$switch-prefix-cls}-inner {
+      left: 8px;
+      font-size: 14px;
+    }
+    &.#{$switch-prefix-cls}-checked {
+      &:after {
+        left: #{$switch-bg-width - $switch-bg-height + 2px};
+      }
+    }
+  }
+}

@@ -1,0 +1,60 @@
+@import "../../styles/index.scss";
+
+$rate-pre-cls: "rate";
+
+.#{$rate-pre-cls} {
+  display: inline-block;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  vertical-align: middle;
+  &-star {
+    display: inline-block;
+    position: relative;
+    transition: all 0.3s;
+    &:hover {
+      transform: scale(1.1);
+    }
+    &:not(:last-child) {
+      margin-right: 8px;
+    }
+    &-pre {
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50%;
+      height: 100%;
+      overflow: hidden;
+      opacity: 0;
+    }
+    &-pre,
+    &-after {
+      transition: all 0.3s;
+      color: $black-15;
+      font-size: 20px;
+      cursor: pointer;
+      user-select: none;
+      .icon {
+        font-size: 20px;
+      }
+    }
+    &.#{$rate-pre-cls}-star-half {
+      .#{$rate-pre-cls}-star-pre {
+        opacity: 1;
+        color: $yellow;
+      }
+    }
+    &.#{$rate-pre-cls}-star-full {
+      .#{$rate-pre-cls}-star-after {
+        color: $yellow;
+      }
+    }
+    &.#{$rate-pre-cls}-star-zero {
+      .#{$rate-pre-cls}-star-full,
+      .#{$rate-pre-cls}-star-after {
+        color: $black-15;
+      }
+    }
+  }
+}

@@ -1,0 +1,68 @@
+@import "../../styles/index.scss";
+
+$timepicker-prefix-cls: "timepicker";
+
+@mixin size($fontSize: $base-font-size) {
+  $height: $fontSize * 3 - 2px;
+  max-height: $height * 6;
+  padding-bottom: $height * 5;
+  font-size: $fontSize;
+  .#{$timepicker-prefix-cls}-panel-selecter-item {
+    height: $height;
+    line-height: $height;
+  }
+}
+
+.#{$timepicker-prefix-cls} {
+  &-panel {
+    display: inline-flex;
+    justify-content: space-between;
+    width: 100%;
+    @include normalShadow();
+    background-color: #fff;
+    &-selecter {
+      position: relative;
+      flex: 1;
+      min-width: 56px;
+      text-align: center;
+      overflow: hidden;
+      box-sizing: border-box;
+      &:hover {
+        overflow: auto;
+      }
+      &:not(:last-child) {
+        border-right: 1px solid $black-15;
+      }
+      &-list {
+        width: 100%;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        .#{$timepicker-prefix-cls}-panel-selecter-item {
+          width: 100%;
+          transition: all 0.3s;
+          cursor: pointer;
+          &.#{$timepicker-prefix-cls}-selected {
+            font-weight: 700;
+            background-color: $black-5;
+            color: $blue;
+          }
+          &:hover {
+            background-color: $blue-2;
+            color: $blue;
+          }
+        }
+      }
+      &.#{$timepicker-prefix-cls}-panel-selecter-small {
+        @include size($small-font-size);
+      }
+      &.#{$timepicker-prefix-cls}-panel-selecter-default {
+        @include size($base-font-size);
+      }
+      &.#{$timepicker-prefix-cls}-panel-selecter-large {
+        @include size($large-font-size);
+      }
+    }
+  }
+}
