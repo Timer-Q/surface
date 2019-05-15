@@ -1,6 +1,8 @@
 {
-  "main.css": "css/style.css",
-  "main.css.map": "css/style.css.map",
-  "main.js": "js/breezy.js",
-  "main.js.map": "js/breezy.js.map"
+  "js/0.7e77c5c5.chunk.js": "js/0.7e77c5c5.chunk.js",
+  "js/0.7e77c5c5.chunk.js.map": "js/0.7e77c5c5.chunk.js.map",
+  "main.css": "css/main.9e22fdc5.css",
+  "main.css.map": "css/main.9e22fdc5.css.map",
+  "main.js": "js/main.8946b715.js",
+  "main.js.map": "js/main.8946b715.js.map"
 }

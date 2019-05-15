@@ -13,7 +13,7 @@ render() {
   return (
     <div>
       <Button>主要按钮</Button>
-      <Button href="www.mafengwo.cn">马蜂窝</Button>
+      <Button href="www.mafengwo.cn">surface</Button>
       <Button type="default">默认按钮</Button>
       <Button link>文字按钮</Button>
     </div>

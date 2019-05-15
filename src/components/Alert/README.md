@@ -32,7 +32,7 @@ render() {
       <p>closable 可关闭 success</p>
       <Alert closable type="success" content={this.state.content} />
       <p>danger</p>
-      <Alert type="danger" title="马蜂窝是这儿吗" content={this.state.content} />
+      <Alert type="danger" title="surface是这儿吗" content={this.state.content} />
       <p>warning</p>
       <Alert type="warning" content={this.state.content} />
     </div>
